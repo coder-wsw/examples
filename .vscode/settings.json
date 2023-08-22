@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.html": "html",
         "vector": "cpp",
         "algorithm": "cpp",
         "array": "cpp",
@@ -67,6 +68,10 @@
         "xmemory": "cpp",
         "xstring": "cpp",
         "xtr1common": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "queue": "cpp",
+        "deque": "cpp",
+        "ranges": "cpp",
+        "xstddef": "cpp"
     }
 }

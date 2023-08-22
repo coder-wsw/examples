@@ -10,7 +10,6 @@ public:
     void print(int i){
         SPDLOG_INFO("test {}",i);
     };
-
 };
 
 #endif // !TEST

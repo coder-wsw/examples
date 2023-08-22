@@ -1,0 +1,5 @@
+[2023-08-22 22:27:10.661] [info] [main.cpp:38] Welcome to spdlog!
+[2023-08-22 22:27:10.662] [warning] [main.cpp:40] Easy padding in numbers like 00000012
+[2023-08-22 22:27:10.662] [error] [main.cpp:41] Support for int: 42;  hex: 2a;  oct: 52; bin: 101010
+[2023-08-22 22:27:10.662] [critical] [main.cpp:42] Support for floats 1.23
+[2023-08-22 22:27:10.662] [info] [test.hpp:11] test 0

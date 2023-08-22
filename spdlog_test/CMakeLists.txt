@@ -6,6 +6,7 @@ project(spdlog_test
 set(SRC_FILES 
     src/main.cpp
     include/test.hpp
+    include/threadpool.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SRC_FILES})
@@ -22,5 +23,5 @@ target_link_libraries(${PROJECT_NAME}
 
 target_compile_definitions(${PROJECT_NAME}
     PRIVATE
-        SPDLOG_ACTIVE_LEVEL=$<IF:$<CONFIG:Debug>,SPDLOG_LEVEL_TRACE,SPDLOG_LEVEL_INFO>
+        SPDLOG_ACTIVE_LEVEL=$<IF:$<CONFIG:Debug>,SPDLOG_LEVEL_TRACE,SPDLOG_LEVEL_TRACE>
 )

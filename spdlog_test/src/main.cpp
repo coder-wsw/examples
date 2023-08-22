@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <vector>
+#include <functional>
 #include "spdlog/spdlog.h"
 #include <spdlog/sinks/rotating_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
@@ -9,6 +10,7 @@
 #include "spdlog/sinks/basic_file_sink.h" 
 #include "spdlog/sinks/rotating_file_sink.h"
 #include "test.hpp"
+#include "threadpool.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -33,16 +35,16 @@ int main(int argc, char *argv[])
         spdlog::set_default_logger(logger);
         spdlog::set_level(spdlog::level::trace);
 
+        threadpool pool(4);
+        
         Test test;
-        for(int i = 0; i < 1; i++){
-            SPDLOG_INFO("Welcome to spdlog!");
-            SPDLOG_DEBUG("Some debug message with param {}", 42);
-            SPDLOG_WARN("Easy padding in numbers like {:08d}", 12);
-            SPDLOG_ERROR("Support for int: {0:d};  hex: {0:x};  oct: {0:o}; bin: {0:b}", 42);
-            SPDLOG_CRITICAL("Support for floats {:03.2f}", 1.23456);
-            SPDLOG_TRACE("Positional args are {1} {0}..", "too", "supported");
-            test.print(i);
+        for(int i = 0; i < 10; i++){
+            // pool.addTask(std::bind(test.print, i));
+            pool.addTask([i](){
+                SPDLOG_INFO("test {}",i);
+            });
         }
+        pool.start();
     }
     catch (const spdlog::spdlog_ex& ex)
     {
