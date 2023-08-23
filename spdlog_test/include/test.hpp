@@ -16,6 +16,13 @@ public:
     {
         SPDLOG_INFO("test {}", i);
     };
+
+    int calc(int a, int b)
+    {
+        SPDLOG_INFO("calc {} + {} = {}", a, b, a + b);
+        return a + b;
+    }
+
     std::mutex m_mutex;
 };
 

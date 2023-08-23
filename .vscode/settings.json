@@ -72,7 +72,9 @@
         "queue": "cpp",
         "deque": "cpp",
         "ranges": "cpp",
-        "xstddef": "cpp"
+        "xstddef": "cpp",
+        "future": "cpp",
+        "random": "cpp"
     },
     "editor.formatOnSave": true,
 }

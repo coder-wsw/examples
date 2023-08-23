@@ -31,7 +31,9 @@ int main(int argc, char* argv[])
 
         auto logger = std::make_shared<spdlog::logger>("", std::begin(sinks),
                                                        std::end(sinks));
-        logger->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [thread %t][%l] %v");
+        logger->set_pattern(
+            "[%Y-%m-%d %H:%M:%S.%e] [%s:%#] [thread %t] [%^%l%$] %v");
+
         spdlog::set_default_logger(logger);
         spdlog::set_level(spdlog::level::trace);
 
@@ -42,12 +44,12 @@ int main(int argc, char* argv[])
         std::thread t1([&]() {
             while (true) {
                 SPDLOG_INFO("t1 {}", i);
-                // std::this_thread::sleep_for(std::chrono::seconds(1));
+                std::chrono::milliseconds dura(1000);
+                std::this_thread::sleep_for(dura);
                 pool.addTask(std::bind(&Test::print, &test, i));
-                // pool.addTask([&]() {
-                //     std::lock_guard<std::mutex> lock(test.m_mutex);
-                //     test.print(5);
-                // });
+                std::future<int> result =
+                    pool.addTask(std::bind(&Test::calc, &test, i, i + 1));
+                SPDLOG_INFO("result {}", result.get());
                 i++;
             }
         });
