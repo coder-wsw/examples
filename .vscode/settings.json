@@ -73,5 +73,6 @@
         "deque": "cpp",
         "ranges": "cpp",
         "xstddef": "cpp"
-    }
+    },
+    "editor.formatOnSave": true,
 }
