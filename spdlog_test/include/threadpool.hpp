@@ -52,7 +52,6 @@ public:
         if (m_idlThrNum < 1 && m_pool.size() < MAX_SIZE)
             addThread(1);
         m_cond.notify_one(); // 唤醒一个线程执行
-
         return future;
     }
 

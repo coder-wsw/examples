@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <vector>
 
+#include "boost/asio.hpp"
 #include "test.hpp"
 #include "threadpool.hpp"
 
