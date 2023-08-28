@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
                 SPDLOG_INFO("t1 {}", i);
                 std::chrono::milliseconds dura(1000);
                 std::this_thread::sleep_for(dura);
-                pool.addTask(std::bind(&Test::print, &test, i));
+                pool.addTask2(std::bind(&Test::print, &test, i));
                 std::future<int> result =
                     pool.addTask(std::bind(&Test::calc, &test, i, i + 1));
                 SPDLOG_INFO("result {}", result.get());
